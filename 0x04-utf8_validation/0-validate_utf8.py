@@ -12,15 +12,15 @@ def validUTF8(data):
     mask_1 = 1 << 7
     mask_2 = 1 << 6
 
-    for i in data:
+    for byte in data:
 
         mask_byte = 1 << 7
 
         if number_bytes == 0:
-
-            while mask_byte & i:
+            # Count the number of leading 1s in the byte to determine the number of bytes
+            while mask_byte & byte:
                 number_bytes += 1
-                mask_byte = mask_byte >> 1
+                mask_byte >>= 1
 
             if number_bytes == 0:
                 continue
@@ -29,7 +29,8 @@ def validUTF8(data):
                 return False
 
         else:
-            if not (i & mask_1 and not (i & mask_2)):
+            # Check that the byte is a valid continuation byte
+            if not (byte & mask_1 and not (byte & mask_2)):
                 return False
 
         number_bytes -= 1
