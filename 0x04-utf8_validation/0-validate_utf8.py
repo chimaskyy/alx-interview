@@ -17,7 +17,8 @@ def validUTF8(data):
         mask_byte = 1 << 7
 
         if number_bytes == 0:
-            # Count the number of leading 1s in the byte to determine the number of bytes
+            '''Count the number of leading 1s in the
+            byte to determine the number of bytes'''
             while mask_byte & byte:
                 number_bytes += 1
                 mask_byte >>= 1
