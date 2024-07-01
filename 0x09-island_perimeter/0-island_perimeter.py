@@ -4,6 +4,7 @@ This module returns the perimeter of the
 Island described in grid
 """
 def island_perimeter(grid):
+    """function that returns the perimeter of the island"""
     perimeter = 0
     for i in range(len(grid)):
         for j in range(len(grid[i])):
